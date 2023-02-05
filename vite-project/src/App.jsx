@@ -5,7 +5,15 @@ import { nanoid } from 'nanoid'
 export default function App() {
   
   const [dice, setDice] = React.useState(rollAllDice())
+  const [tenzies, setTenzies] = React.useState(false)
   
+  React.useEffect(() => {
+    const firstDieValue = dice[0].value
+    if(dice.every(die => die.isHeld === true && die.value === firstDieValue)){
+      setTenzies(true)
+    }
+  },[dice])
+
   function rollSingleDie(){
     return (
       {
