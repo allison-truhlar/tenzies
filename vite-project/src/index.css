@@ -51,10 +51,12 @@ main{
 }
 
 .dice-container{
-  flex-grow: 0.4;
   display: grid;
   grid-template: repeat(5, 1fr) /repeat(2, 1fr);
-  grid-gap: 1.75rem 1.75rem;
+  grid-gap: 1.5em 3em;
+  justify-items: center;
+  align-items: center;
+  /* border: 1px solid red; */
 }
 
 .die{
@@ -87,3 +89,17 @@ main{
 .main-btn:active{
   box-shadow: inset 1px 1px 10px white;
 }
+
+@media (min-width: 650px) {
+
+  .app-container{
+    max-height: 400px;
+   
+  }
+    .dice-container {
+      width: 80%;
+      grid-template: repeat(2, 1fr)/repeat(5, 1fr);
+      grid-gap: 1em;
+    }
+	}
+  
