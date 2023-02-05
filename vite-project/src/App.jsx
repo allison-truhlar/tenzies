@@ -1,6 +1,7 @@
 import React from "react"
 import Die from "./Die"
 import { nanoid } from 'nanoid'
+import Confetti from 'react-confetti'
 
 export default function App() {
   
@@ -60,6 +61,7 @@ export default function App() {
   
   return (
     <main>
+      {tenzies && <Confetti />}
       <div className="app-container">
         <div className="app-header-container">
           <h1 className="app-title">Tenzies</h1>
@@ -69,7 +71,7 @@ export default function App() {
           {diceElements}
         </div>
         <button className="main-btn" onClick={rollSomeDice}>
-          Roll
+          {tenzies ? "New Game" : "Roll"}
         </button>
       </div>
     </main>
