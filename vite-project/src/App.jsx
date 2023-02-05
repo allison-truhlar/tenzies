@@ -34,18 +34,23 @@ export default function App() {
   }
 
   function rollSomeDice(){
-    setDice(oldDice => oldDice.map(die => {
-      if(!die.isHeld){
-        return rollSingleDie()
-      } else{
-        return die
-      }
-    }))
+    if(tenzies){
+      setDice(rollAllDice())
+      setTenzies(false)
+    } else{
+      setDice(oldDice => oldDice.map(die => {
+        if(!die.isHeld){
+          return rollSingleDie()
+        } else{
+          return die
+        }
+      }))
+    }
   }
 
   function holdDie(id){
     setDice(oldDice => oldDice.map(die => {
-      return die.id === id ? {...die, isHeld: true} : die
+      return die.id === id ? {...die, isHeld: !die.isHeld} : die
     }))
   }
 
