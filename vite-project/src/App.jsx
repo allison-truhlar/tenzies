@@ -8,12 +8,28 @@ export default function App() {
   const [dice, setDice] = React.useState(rollAllDice())
   const [tenzies, setTenzies] = React.useState(false)
   const [rollCount, setRollCount] = React.useState(0)
+  const [topScores, setTopScores] = React.useState(
+    ()=>JSON.parse(localStorage.getItem("topScores")) || []
+  )
   
   React.useEffect(() => {
     const firstDieValue = dice[0].value
+    
     if(dice.every(die => die.isHeld === true && die.value === firstDieValue)){
+    
       setTenzies(true)
-      localStorage.setItem("topScores", JSON.stringify(rollCount))
+
+      setTopScores(prevScores => {
+        let newTopScores = [...prevScores, rollCount].sort(function(a, b){return a-b})
+        console.log(newTopScores)
+        if (newTopScores.length > 3){
+          newTopScores.slice(0,3)
+        }
+        return newTopScores
+      })
+      
+      localStorage.setItem("topScores", JSON.stringify(topScores))
+      
     }
   },[dice])
 
@@ -49,6 +65,7 @@ export default function App() {
         }
       }))
       setRollCount(oldCount => oldCount + 1)
+      console.log(rollCount)
     }
   }
 
