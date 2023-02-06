@@ -1,17 +1,19 @@
 import React from "react"
 import Die from "./Die"
 import { nanoid } from 'nanoid'
-import Confetti from 'react-confetti'
+import Confetti from "./Confetti"
 
 export default function App() {
   
   const [dice, setDice] = React.useState(rollAllDice())
   const [tenzies, setTenzies] = React.useState(false)
+  const [rollCount, setRollCount] = React.useState(0)
   
   React.useEffect(() => {
     const firstDieValue = dice[0].value
     if(dice.every(die => die.isHeld === true && die.value === firstDieValue)){
       setTenzies(true)
+      localStorage.setItem("topScores", JSON.stringify(rollCount))
     }
   },[dice])
 
@@ -37,6 +39,7 @@ export default function App() {
     if(tenzies){
       setDice(rollAllDice())
       setTenzies(false)
+      setRollCount(0)
     } else{
       setDice(oldDice => oldDice.map(die => {
         if(!die.isHeld){
@@ -45,6 +48,7 @@ export default function App() {
           return die
         }
       }))
+      setRollCount(oldCount => oldCount + 1)
     }
   }
 
