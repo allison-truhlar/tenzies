@@ -6,7 +6,7 @@ body{
   margin: 0;
   background: #0B2434;
   font-family: 'Karla', 'sans-serif';
-  color: #2B283A
+  color: #2B283A;
 }
 
 main{
@@ -94,6 +94,32 @@ main{
 
 .main-btn:active{
   box-shadow: inset 1px 1px 10px white;
+}
+
+.leaderboard-container{
+  display: block;  
+  position: fixed;
+    bottom: 50%;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 90%;
+    border: 4px solid #0B2434; 
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px 2px #666;
+    background-color: #F5F5F5;
+    color: #2B283A;
+    text-align: center;
+    padding: 2em;
+}
+
+.leaderboard-title,
+.leaderboard-subtitle{
+  margin: 0 0 1rem 0;
+}
+
+.leaderboard-entry{
+  margin: 0.5rem 0 0 0;
 }
 
 @media (min-width: 650px) {

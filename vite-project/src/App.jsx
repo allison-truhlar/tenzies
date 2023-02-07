@@ -1,7 +1,8 @@
 import React from "react"
-import Die from "./Die"
 import { nanoid } from 'nanoid'
 import Confetti from "./Confetti"
+import Die from "./Die"
+import Leaderboard from "./Leaderboard"
 
 export default function App() {
   
@@ -90,6 +91,7 @@ export default function App() {
       {tenzies && <Confetti />}
       <div className="app-background">
         <div className="app-content-container">
+          {tenzies && <Leaderboard rollCount={rollCount} topScores={topScores}/>}
           <div className="app-header-container">
             <h1 className="app-title">Tenzies</h1>
             <p className="app-instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
