@@ -62,7 +62,6 @@ main{
   grid-gap: 1.5em 3em;
   justify-items: center;
   align-items: center;
-  /* border: 1px solid red; */
 }
 
 .die{
@@ -71,6 +70,10 @@ main{
   width: 3.25rem;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
+}
+
+.die:focus{
+  outline: 3px solid #2B283A;
 }
 
 .die-face{
@@ -94,6 +97,11 @@ main{
 
 .main-btn:active{
   box-shadow: inset 1px 1px 10px white;
+  outline: 3px solid #2B283A;
+}
+
+.main-btn:focus{
+  outline: 3px solid #2B283A;
 }
 
 .leaderboard-container{
