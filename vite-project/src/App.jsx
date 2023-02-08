@@ -27,9 +27,8 @@ export default function App() {
 
       setTopScores(prevScores => {
         let newTopScores = [...prevScores, rollCount].sort(function(a, b){return a-b})
-        console.log(newTopScores)
         if (newTopScores.length > 3){
-          newTopScores.slice(0,3)
+          return newTopScores.slice(0,3)
         }
         return newTopScores
       })
