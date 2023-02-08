@@ -1,11 +1,11 @@
 import React from "react"
 
 export default function Leaderboard(props){
-    const userPlace = props.topScores.indexOf(props.rollCount)
-    console.log(props.rollCount)
-    console.log(props.topScores)
-    console.log(userPlace)
     
+    //Determine the current user's roll count place relative to the top scores
+    const userPlace = props.topScores.indexOf(props.rollCount)
+    
+    //Generate JSX for the leaderboard entries. Includes dynamic styling if the current score is one of the top scores
     const leaderboardEntries = props.topScores.map((score, index) => {
         const placeOrder = ["🥇 1st","🥈 2nd","🥉 3rd"]
         const styles = {
@@ -16,7 +16,7 @@ export default function Leaderboard(props){
         )
     })
 
-
+    //Leaderboard component
     return(
         <div className="leaderboard-container">
             <h1 className="leaderboard-title">Tenzies!</h1>
