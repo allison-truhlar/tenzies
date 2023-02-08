@@ -39,7 +39,6 @@ main{
 
 .app-header-container{
   width: 90%;
- 
 }
 
 .app-title{
@@ -62,7 +61,6 @@ main{
   grid-gap: 1.5em 3em;
   justify-items: center;
   align-items: center;
-  /* border: 1px solid red; */
 }
 
 .die{
@@ -71,6 +69,10 @@ main{
   width: 3.25rem;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
+}
+
+.die:focus{
+  outline: 3px solid #2B283A;
 }
 
 .die-face{
@@ -94,6 +96,11 @@ main{
 
 .main-btn:active{
   box-shadow: inset 1px 1px 10px white;
+  outline: 3px solid #2B283A;
+}
+
+.main-btn:focus{
+  outline: 3px solid #2B283A;
 }
 
 .leaderboard-container{
@@ -137,13 +144,27 @@ main{
   }
   .leaderboard-container{
     width: 50%;
-    border: 4px solid #0B2434; 
-    border-radius: 5px;
-    box-shadow: 0px 0px 6px 2px #666;
-    background-color: #F5F5F5;
-    text-align: center;
-    color: #2B283A;
-    padding: 2em;
+    bottom: 50%;
+  }
+}
+
+@media (min-width: 768px){
+  .app-header-container{
+    width: 70%;
+  }
+  /* .app-title{
+    margin:0 0 0.2em 0;
+  } */
+  .app-instructions{
+    font-size: 1rem;
+  }
+}
+@media (min-width: 1290px){
+  .app-title{
+    margin:0 0 0.5em 0;
+  }
+  .app-instructions{
+    font-size: 1.1rem;
   }
 }
   

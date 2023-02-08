@@ -66,7 +66,7 @@ export default function App() {
         }
       }))
       setRollCount(oldCount => oldCount + 1)
-      console.log(rollCount)
+      
     }
   }
 
@@ -76,13 +76,21 @@ export default function App() {
     }))
   }
 
+  function handleKeyDown(e, id){
+    if (e.keyCode != 9){
+      holdDie(id)
+    }
+  }
+
   const diceElements = dice.map(die => {
     return (
       <Die 
         key={die.id} 
         value={die.value} 
-        isHeld={die.isHeld} 
-        holdDie={() => holdDie(die.id)}
+        isHeld={die.isHeld}
+        id={die.id} 
+        holdDie={holdDie}
+        handleKeyDown={handleKeyDown}
       />)
   })
   
