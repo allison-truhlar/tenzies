@@ -11,4 +11,4 @@ export default () => {
     />
   )
 }
-// See: https://www.npmjs.com/package/react-confetti
+// For more info: https://www.npmjs.com/package/react-confetti
