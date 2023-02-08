@@ -76,7 +76,7 @@ export default function App() {
     }))
   }
 
-  function keyHoldDie(e, id){
+  function handleKeyDown(e, id){
     if (e.keyCode != 9){
       holdDie(id)
     }
@@ -90,7 +90,7 @@ export default function App() {
         isHeld={die.isHeld}
         id={die.id} 
         holdDie={holdDie}
-        keyHoldDie={keyHoldDie}
+        handleKeyDown={handleKeyDown}
       />)
   })
   

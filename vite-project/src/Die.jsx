@@ -6,8 +6,14 @@ export default function Die(props){
         backgroundColor: props.isHeld ? "#59E391" : "#FFFFFF"}
 
     return(
-        <div className="die" style={styles} onClick={()=>props.holdDie(props.id)} onKeyDown={(e)=>props.keyHoldDie(e, props.id)} tabIndex={0}>
-            <h1 className="die-face">{props.value}</h1>
+        <div 
+            tabIndex={0}    
+            className="die" 
+            style={styles} 
+            onClick={()=>props.holdDie(props.id)} 
+            onKeyDown={(e)=>props.handleKeyDown(e, props.id)} 
+        >
+            <h1 className="die-face" onKeyDown={(e)=>props.handleKeyDown(e, props.id)}>{props.value}</h1>
         </div>
     )
 }
