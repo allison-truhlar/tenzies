@@ -1,17 +1,36 @@
 import React from "react"
-import Die from "./Die"
 import { nanoid } from 'nanoid'
-import Confetti from 'react-confetti'
+import Confetti from "./Confetti"
+import Die from "./Die"
+import Leaderboard from "./Leaderboard"
 
 export default function App() {
   
   const [dice, setDice] = React.useState(rollAllDice())
   const [tenzies, setTenzies] = React.useState(false)
+  const [rollCount, setRollCount] = React.useState(0)
+  const [topScores, setTopScores] = React.useState(
+    ()=>JSON.parse(localStorage.getItem("topScores")) || []
+  )
   
   React.useEffect(() => {
     const firstDieValue = dice[0].value
+    
     if(dice.every(die => die.isHeld === true && die.value === firstDieValue)){
+    
       setTenzies(true)
+
+      setTopScores(prevScores => {
+        let newTopScores = [...prevScores, rollCount].sort(function(a, b){return a-b})
+        console.log(newTopScores)
+        if (newTopScores.length > 3){
+          newTopScores.slice(0,3)
+        }
+        return newTopScores
+      })
+      
+      localStorage.setItem("topScores", JSON.stringify(topScores))
+      
     }
   },[dice])
 
@@ -37,6 +56,7 @@ export default function App() {
     if(tenzies){
       setDice(rollAllDice())
       setTenzies(false)
+      setRollCount(0)
     } else{
       setDice(oldDice => oldDice.map(die => {
         if(!die.isHeld){
@@ -45,6 +65,8 @@ export default function App() {
           return die
         }
       }))
+      setRollCount(oldCount => oldCount + 1)
+      console.log(rollCount)
     }
   }
 
@@ -69,6 +91,7 @@ export default function App() {
       {tenzies && <Confetti />}
       <div className="app-background">
         <div className="app-content-container">
+          {tenzies && <Leaderboard rollCount={rollCount} topScores={topScores}/>}
           <div className="app-header-container">
             <h1 className="app-title">Tenzies</h1>
             <p className="app-instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
