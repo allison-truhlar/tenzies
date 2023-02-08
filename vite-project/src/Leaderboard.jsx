@@ -9,7 +9,7 @@ export default function Leaderboard(props){
     const leaderboardEntries = props.topScores.map((score, index) => {
         const placeOrder = ["🥇 1st","🥈 2nd","🥉 3rd"]
         const styles = {
-            color: index===userPlace ? "#59E391" : "#2B283A"
+            color: index===userPlace ? "#5035FF" : "#2B283A"
         }
         return(
             <p className="leaderboard-entry" style={styles}key={index}>{placeOrder[index]} place: {score} rolls</p>
