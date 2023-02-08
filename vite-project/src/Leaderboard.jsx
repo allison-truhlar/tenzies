@@ -9,7 +9,7 @@ export default function Leaderboard(props){
     const leaderboardEntries = props.topScores.map((score, index) => {
         const placeOrder = ["🥇 1st","🥈 2nd","🥉 3rd"]
         const styles = {
-            color: index===userPlace ? "red" : "#2B283A"
+            color: index===userPlace ? "#59E391" : "#2B283A"
         }
         return(
             <p className="leaderboard-entry" style={styles}key={index}>{placeOrder[index]} place: {score} rolls</p>
@@ -20,7 +20,8 @@ export default function Leaderboard(props){
     return(
         <div className="leaderboard-container">
             <h1 className="leaderboard-title">Tenzies!</h1>
-            <h2 className="leaderboard-subtitle">Roll Count Leaderboard</h2>
+            <p>Your score: {props.rollCount} rolls</p>
+            <h2 className="leaderboard-subtitle">Your Top Scores</h2>
             {leaderboardEntries}
         </div>
     )
